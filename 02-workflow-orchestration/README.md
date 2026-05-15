@@ -413,3 +413,25 @@ and you can give custom image to docker to run the script
 another way to run script is by subprocess 
 it acts as another process 
 but if kestra is running locally it is better to use venv 
+
+
+
+mistkes i done for etl pipeline 
+scripts need but i did not give 
+inputFiles:
+  data.json : {{}}
+outputFiles:
+  - "*.json" 
+env:
+  columns_to_keep : "{{input.columns_to_keep}}"
+use doublq quotes since input is strings 
+i did not use doublwe quotes 
+in python scripts 
+  json.loads(string) not json.load(string)
+for env variable 
+with open("filename","r"/"w") and not with open("filename",r/w) as file: 
+
+json.dump(variable , file , indent=4)
+
+and not 
+json.dump(variable ,indent=4)
