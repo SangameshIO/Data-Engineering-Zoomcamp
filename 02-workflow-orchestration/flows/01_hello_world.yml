@@ -1,0 +1,41 @@
+id : hello_world 
+namespace : zoomcamp
+
+
+inputs:
+  - id : name
+    type: string
+    default: "World"
+
+
+concurrency:
+  behavior: allow
+  limit: 2 
+
+variables:
+  greet_message: "Hello, {{ inputs.name }}!"
+
+tasks:
+  -id : greet 
+   type : io.kestra.plugin.core.log.Log 
+   message : "{{ render(vars.greet_message) }}"
+
+  -id: generate_output 
+   type : io.kestra.plugin.core.debug.return 
+   message :  i was generated using this workflow 
+
+  -id : sleep 
+   type : io.kestra.plugin.core.flow.Sleep
+   duration : PT10S
+
+  -id: log_output 
+   type : io.kestra.plugin.core.log.Log
+   message : {{outputs.generate_output.value}}
+
+
+plugindefaults:
+  - type : io.kestra.plugin.core.log.Log
+    values:
+      level: ERROR
+
+

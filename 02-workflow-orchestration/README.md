@@ -375,3 +375,41 @@ kestra:
 it is used to set common properties like debug level 
 or credentails for process across workflows 
 
+
+
+guides for kestra flows 
+do not use tabs in flows use spaces 
+use double quotes for string and expressions 
+and | is used for multiline scripts 
+
+if an object like array you are describing use - otherwise not 
+example 
+in inputs:
+   - id: array01
+     type : ARRAY
+     defaults : 
+      - brand
+      - price
+dont leave space between key and semicolon 
+
+
+executing python script 
+ways 
+  script 
+    less lines of code in python written in kestra workflow
+  commands 
+    local python sepaerate file 
+    can be written in namespace 
+    and used in workflow 
+
+io.kestra.plugin.scripts.python.Commands 
+script 
+  io.kestra.plugin.scripts.python.Script 
+
+in commands if you use docker then there will be no clash in dependencies 
+and you can give custom image to docker to run the script 
+
+
+another way to run script is by subprocess 
+it acts as another process 
+but if kestra is running locally it is better to use venv 
